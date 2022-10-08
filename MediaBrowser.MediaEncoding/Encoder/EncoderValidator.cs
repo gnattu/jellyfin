@@ -103,7 +103,9 @@ namespace MediaBrowser.MediaEncoding.Encoder
             "tonemap_vaapi",
             "procamp_vaapi",
             "overlay_vaapi",
-            "hwupload_vaapi"
+            "hwupload_vaapi",
+            // videotoolbox
+            "yadif_videotoolbox"
         };
 
         private static readonly IReadOnlyDictionary<int, string[]> _filterOptionsDict = new Dictionary<int, string[]>
