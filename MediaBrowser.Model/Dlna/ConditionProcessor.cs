@@ -346,8 +346,23 @@ namespace MediaBrowser.Model.Dlna
             {
                 foreach (var singleConditionString in condition.Value.AsSpan().Split('|'))
                 {
-                    if (Enum.TryParse(singleConditionString, true, out VideoRangeType conditionValue)
-                        && conditionValue.Equals(currentValue))
+                    Enum.TryParse(singleConditionString, true, out VideoRangeType conditionValue);
+                    if (conditionValue.Equals(currentValue))
+                    {
+                        return true;
+                    }
+
+                    if (currentValue.Equals(VideoRangeType.DOVIWithHDR10) && conditionValue.Equals(VideoRangeType.HDR10))
+                    {
+                        return true;
+                    }
+
+                    if (currentValue.Equals(VideoRangeType.DOVIWithHLG) && conditionValue.Equals(VideoRangeType.HLG))
+                    {
+                        return true;
+                    }
+
+                    if (currentValue.Equals(VideoRangeType.DOVIWithSDR) && conditionValue.Equals(VideoRangeType.SDR))
                     {
                         return true;
                     }
